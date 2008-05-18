@@ -1,0 +1,14 @@
+diff -uNr wimo-dccm-0.5.0.orig/wimo-dccm.build wimo-dccm-0.5.0/wimo-dccm.build
+--- wimo-dccm-0.5.0.orig/wimo-dccm.build	2007-06-12 12:34:43.000000000 +0000
++++ wimo-dccm-0.5.0/wimo-dccm.build	2008-05-18 22:07:29.000000000 +0000
+@@ -186,8 +186,8 @@
+       <copy file="bin/${project.name}.exe" todir="${DESTDIR}/${PKGLIBDIR}" overwrite="true" verbose="true"/>
+       <copy file="bin/${project.name}.exe.mdb" todir="${DESTDIR}/${PKGLIBDIR}" if="${file::exists('bin/'+project.name+'.exe.mdb')}" overwrite="true" verbose="true"/>
+       
+-      <mkdir dir="${DESTDIR}/usr/share/hal/information/20thirdparty"/>
+-      <copy file="contrib/hal/20thirdparty/20-usb-pocketpc.fdi" todir="${DESTDIR}/usr/share/hal/information/20thirdparty" overwrite="true" verbose="true"/>
++      <mkdir dir="${DESTDIR}/usr/share/hal/fdi/information/20thirdparty"/>
++      <copy file="contrib/hal/20thirdparty/20-usb-pocketpc.fdi" todir="${DESTDIR}/usr/share/hal/fdi/information/20thirdparty" overwrite="true" verbose="true"/>
+ 
+       <copy file="contrib/dccm-rndis.sh" todir="${DESTDIR}/${PKGLIBDIR}" overwrite="true" verbose="true"/>
+       <copy file="${output.dir}/dccm-serial.sh" todir="${DESTDIR}/${PKGLIBDIR}" overwrite="true" verbose="true"/>
