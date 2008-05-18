@@ -1,12 +1,13 @@
 Summary:	WiMo-DCCM - detect plugged and unplugged USB PocketPC devices
 Name:		wimo-dccm
 Version:	0.5.0
-Release:	0.1
+Release:	0.2
 License:	GPL
 Group:		Applications
 Source0:	http://dl.sourceforge.net/wimo/%{name}-%{version}.tar.bz2
 # Source0-md5:	9a2102103d34f07594f848c08f10d137
 URL:		http://www.wimol.org/
+Patch0:		%{name}-hal_info_path.patch
 BuildRequires:	mono-csharp
 BuildRequires:	nant
 BuildRequires:	pkgconfig
@@ -27,6 +28,7 @@ Ideas took from SynCE odccm project.
 
 %prep
 %setup -q
+%patch0 -p1
 
 %build
 nant -D:PREFIX=%{_prefix}  \
@@ -53,4 +55,4 @@ rm -rf $RPM_BUILD_ROOT
 %attr(755,root,root) %{_libdir}/%{name}/dccm*.sh
 %attr(755,root,root) %{_libdir}/%{name}/wimo-serial-chat
 %{_libdir}/%{name}/%{name}*
-%{_datadir}/hal/information/20thirdparty/20-usb-pocketpc.fdi
+%{_datadir}/hal/fdi/information/20thirdparty/20-usb-pocketpc.fdi
