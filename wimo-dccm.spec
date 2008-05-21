@@ -1,3 +1,4 @@
+#TODO - logrotate, permisions
 Summary:	WiMo-DCCM - detect plugged and unplugged USB PocketPC devices
 Name:		wimo-dccm
 Version:	0.5.0
@@ -37,6 +38,8 @@ nant -D:PREFIX=%{_prefix}  \
 
 %install
 rm -rf $RPM_BUILD_ROOT
+install -d $RPM_BUILD_ROOT%{_var}/log/archive/%{name}
+
 nant install \
 	-D:DESTDIR=$RPM_BUILD_ROOT
 
@@ -57,3 +60,7 @@ rm -rf $RPM_BUILD_ROOT
 %attr(755,root,root) %{_libdir}/%{name}/wimo-serial-chat
 %{_libdir}/%{name}/%{name}*
 %{_datadir}/hal/fdi/information/20thirdparty/20-usb-pocketpc.fdi
+%attr(770,root,root) %dir %{_var}/log/%{name}
+%attr(770,root,root) %dir %{_var}/log/archive/%{name}
+%attr(770,root,root) %dir %{_var}/run/%{name}
+#%attr(640,root,root) %config(noreplace) %verify(not md5 mtime size) /etc/logrotate.d/%{name}
